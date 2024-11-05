@@ -1,35 +1,40 @@
-import {StyleSheet, Text, View} from "react-native";
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 import React from "react";
+import {primary} from "@/constants/Colors";
 
 const iconSize = 24;
-const iconColor = "#99A1B3";
+const iconColor = primary;
+
+enum EStatus {
+    Processing = "#cdcd47",
+    Delivered = "#5eff5e",
+    Canceled = "#ff5656",
+}
 
 interface orderShortItem {
     id: string,
-    data: string,
+    date: string,
     delivery: string,
     material: string,
-    status: string,
+    status: EStatus,
 }
 
+// @ts-ignore
 export const orderShortData: orderShortItem = [
-    {id: '1', date: '01/10/2024', delivery: "Delivery1", material: "Material1", status:"status1"},
-    {id: '2', date: '02/10/2024', delivery: "Delivery2", material: "Material2", status:"status2"},
-    {id: '3', date: '03/10/2024', delivery: "Delivery3", material: "Material3", status:"status3"},
-    {id: '4', date: '04/10/2024', delivery: "Delivery4", material: "Material4", status:"status4"},
-    {id: '5', date: '05/10/2024', delivery: "Delivery5", material: "Material5", status:"status5"},
-    {id: '6', date: '06/11/2024', delivery: "Delivery6", material: "Material6", status:"status6"},
-    {id: '7', date: '06/11/2024', delivery: "Delivery6", material: "Material6", status:"status6"},
-    {id: '8', date: '06/11/2024', delivery: "Delivery6", material: "Material6", status:"status6"},
-    {id: '9', date: '06/11/2024', delivery: "Delivery6", material: "Material6", status:"status6"},
-    {id: '10', date: '06/11/2024', delivery: "Delivery6", material: "Material6", status:"status6"},
-    {id: '11', date: '06/11/2024', delivery: "Delivery6", material: "Material6", status:"status6"},
-    {id: '12', date: '06/11/2024', delivery: "Delivery6", material: "Material6", status:"status6"},
-    {id: '13', date: '06/11/2024', delivery: "Delivery6", material: "Material6", status:"status6"},
+    {id: '1', date: '21/10/2025', delivery: "Delivery1", material: "Material1", status: EStatus.Processing},
+    {id: '2', date: '20/10/2025', delivery: "Delivery2", material: "Material2", status: EStatus.Canceled},
+    {id: '3', date: '19/10/2025', delivery: "Delivery3", material: "Material3", status: EStatus.Delivered},
+    {id: '4', date: '18/10/2025', delivery: "Delivery4", material: "Material4", status: EStatus.Canceled},
+    {id: '5', date: '17/10/2025', delivery: "Delivery5", material: "Material5", status: EStatus.Processing},
+    {id: '6', date: '16/10/2025', delivery: "Delivery6", material: "Material6", status: EStatus.Processing},
 ];
 
-export const renderOrderShortItem = ({item}) => (
+const getStatusName = (status: EStatus) => {
+    return Object.keys(EStatus).find(key => EStatus[key as keyof typeof EStatus] === status) || '';
+};
+
+export const renderOrderShortItem = ({item}: { item: orderShortItem }) => (
     <View style={styles.listItem}>
         <Text style={styles.dateText}>{item.date}</Text>
 
@@ -39,17 +44,40 @@ export const renderOrderShortItem = ({item}) => (
                 <Text style={styles.iconsText}>{item.delivery}</Text>
             </View>
             <View style={styles.iconsContainer2}>
-                <MaterialCommunityIcons name="hammer" size={iconSize} color={iconColor}/>
+                <MaterialCommunityIcons name="cube-outline" size={iconSize} color={iconColor}/>
                 <Text style={styles.iconsText}>{item.material}</Text>
             </View>
             <View style={styles.iconsContainer2}>
-                <MaterialCommunityIcons name="file-document" size={iconSize} color={iconColor}/>
-                <Text style={styles.iconsText}>{item.status}</Text>
+                <MaterialCommunityIcons name="radiobox-marked" size={iconSize} color={item.status}/>
+                <Text style={styles.iconsText}>{getStatusName(item.status)}</Text>
             </View>
             <MaterialCommunityIcons name="arrow-right" size={iconSize} color={iconColor}/>
         </View>
     </View>
 );
+
+export const renderOrderItemsToList = () => {
+
+    function redirectToOrderDetails (id: string) {
+        console.log("redirect to order details ", id);
+    }
+
+    const renderItem = ({item}: {item: orderShortItem}) => (
+        <TouchableOpacity onPress={() => redirectToOrderDetails(item.id)}>
+            {renderOrderShortItem({item})}
+        </TouchableOpacity>
+    );
+
+    return (
+        <View>
+            <FlatList
+                data={orderShortData}
+                renderItem={(item) => renderItem(item)}
+                keyExtractor={(item) => item.id}
+            />
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
     listContainer: {
@@ -59,11 +87,12 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
     },
     dateText: {
-        fontSize: 14,
-        color: '#99A1B3',
+        fontSize: 15,
+        color: primary,
+        fontWeight: "bold",
         marginBottom: 8,
-        borderBottomWidth: 1,
-        borderBottomColor: '#e0e0e0',
+        borderBottomWidth: 3,
+        borderBottomColor: primary,
     },
     iconsContainer: {
         flexDirection: 'row',

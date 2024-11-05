@@ -58,9 +58,10 @@ export default function NavBar() {
         </View>
     );
 }
-
+// grid/3 | arrow
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: "#fff",
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",

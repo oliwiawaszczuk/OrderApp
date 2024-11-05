@@ -1,14 +1,14 @@
 import React from "react";
 import {Text} from "react-native-paper";
-import {StyleSheet, View} from "react-native";
+import {StyleSheet, View, Image} from "react-native";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 
 export default function Header() {
     return (
         <View style={styles.container}>
             <View style={styles.flexRowJustBetween}>
-                <Text>logo </Text>
-                <Text>brix</Text>
+                <Image source={require('../assets/images/icon.png')} style={{width: 28, height: 28,}}/>
+                <Text>OrderFlow</Text>
             </View>
             <View style={styles.flexRowJustBetween}>
                 <MaterialCommunityIcons name="bell" size={24} color="#99A1B3" style={styles.icon} />
@@ -20,6 +20,7 @@ export default function Header() {
 
 const styles = StyleSheet.create({
     container: {
+        margin: 5,
         paddingHorizontal: 5,
         paddingVertical: 10,
         flexDirection: "row",
@@ -28,6 +29,7 @@ const styles = StyleSheet.create({
     flexRowJustBetween: {
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems: "center",
     },
     icon: {
         paddingHorizontal: 5,

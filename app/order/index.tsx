@@ -2,83 +2,28 @@ import React from 'react';
 import {View, Text, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import {useRouter} from "expo-router";
-import {renderOrderShortItem, orderShortData} from "@/components/renderOrderShortItem";
+import {renderOrderShortItem, orderShortData, renderOrderItemsToList} from "@/components/renderOrderShortItem";
+import useOldProject from "./useOldProject"
+import {styles} from "@/constants/orderCSS";
+import HeaderAndSubheader from "@/components/HeaderAndSubheader";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
+import SecondaryButton from "@/components/buttons/SecondaryButton";
+
+// router.navigate(`/order/useOldProject`); - native stack navigator
 
 export default function Order() {
     const router = useRouter();
 
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>Create new order</Text>
-            <Text style={styles.subHeader}>
-                create new order create new order create new order create new order
-            </Text>
+            <HeaderAndSubheader header={"Create new order"} subheader={"Add products, choose your supplier, and set delivery details—all in one place. Stay organized and keep every order on track!"}/>
+    
+            <PrimaryButton text={"New Order"} onPressFunc={() => {router.navigate(`/order/makeNewProject`);}}/>
+            <SecondaryButton text={"New order for old project"} onPressFunc={() => {router.navigate(`/order/useOldProject`);}}/>
+            <SecondaryButton text={"New order without project"} onPressFunc={() => {router.navigate(`/order/doWithoutProject`);}}/>
 
-            <TouchableOpacity style={styles.buttonPrimary} onPress={() => {router.navigate(`/order/createOrderScreen`);}}>
-                <Text style={styles.buttonTextPrimary}>Make new project</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonSecondary} onPress={() => {router.navigate(`/order/useOldProject`);}}>
-                <Text style={styles.buttonTextSecondary}>Use old project</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonSecondary} onPress={() => {router.navigate(`/order`);}}>
-                <Text style={styles.buttonTextSecondary}>Do without project</Text>
-            </TouchableOpacity>
-
-            <FlatList
-                data={orderShortData}
-                renderItem={renderOrderShortItem}
-                keyExtractor={item => item.id}
-                contentContainerStyle={styles.listContainer}
-            />
+            <Text style={styles.historyLabel}>History</Text>
+            {renderOrderItemsToList()}
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 16,
-        backgroundColor: '#f4f5f7',
-    },
-    header: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginBottom: 8,
-    },
-    subHeader: {
-        fontSize: 14,
-        textAlign: 'center',
-        marginBottom: 24,
-        color: '#6e6e6e',
-    },
-    buttonPrimary: {
-        backgroundColor: '#44494D',
-        paddingVertical: 15,
-        paddingHorizontal: 20,
-        borderRadius: 8,
-        alignItems: 'center',
-        marginBottom: 10,
-    },
-    buttonTextPrimary: {
-        color: 'white',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    buttonSecondary: {
-        backgroundColor: '#d3d3d3',
-        paddingVertical: 15,
-        paddingHorizontal: 20,
-        borderRadius: 8,
-        alignItems: 'center',
-        marginBottom: 10,
-    },
-    buttonTextSecondary: {
-        color: '#6e6e6e',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    listContainer: {
-        marginTop: 20,
-    },
-});
