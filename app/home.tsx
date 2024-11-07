@@ -1,13 +1,23 @@
-import {View, StyleSheet, FlatList} from 'react-native';
-import {Link} from "expo-router";
+import {View, StyleSheet} from 'react-native';
 import React from "react";
-import {Button, Text, Card} from "react-native-paper";
+import {Text, Card} from "react-native-paper";
 import {orderShortData, renderOrderItemsToList, renderOrderShortItem} from "@/components/renderOrderShortItem";
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import {primary} from "@/constants/Colors";
 import {styles} from "@/constants/orderCSS";
+
+function FundsCard() {
+    return (
+        <Card style={stylesHome.fundsCard}>
+            <Card.Content>
+                <Text style={stylesHome.fundsText}>Available funds</Text>
+                <Text style={stylesHome.fundsAmount}>54,44$</Text>
+            </Card.Content>
+        </Card>
+    );
+}
 
 export default function Home() {
     return (
@@ -19,12 +29,7 @@ export default function Home() {
                 <SecondaryButton text={"Learn More"} onPressFunc={() => console.log('Learn More pressed')}/>
             </View>
 
-            <Card style={stylesHome.fundsCard}>
-                <Card.Content>
-                    <Text style={stylesHome.fundsText}>Available funds</Text>
-                    <Text style={stylesHome.fundsAmount}>54,44$</Text>
-                </Card.Content>
-            </Card>
+            <FundsCard/>
 
             <Text style={styles.historyLabel}>History</Text>
 

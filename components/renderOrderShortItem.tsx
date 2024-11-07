@@ -56,7 +56,7 @@ export const renderOrderShortItem = ({item}: { item: orderShortItem }) => (
     </View>
 );
 
-export const renderOrderItemsToList = () => {
+export function renderOrderItemsToList() {
 
     function redirectToOrderDetails (id: string) {
         console.log("redirect to order details ", id);

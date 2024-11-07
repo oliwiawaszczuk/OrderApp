@@ -1,8 +1,4 @@
-export interface Tab {
-    icon: string,
-    label: string,
-    path: string,
-}
+import {Tab} from "@/constants/types/ITabs";
 
 export const Tabs: Tab[] = [
     {icon: "home", label: "Home", path: "home"},

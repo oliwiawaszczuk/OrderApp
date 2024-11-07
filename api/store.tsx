@@ -1,7 +1,8 @@
 import {create} from "zustand"
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createJSONStorage, persist} from 'zustand/middleware';
-import {Tab, Tabs} from "@/api/Tabs";
+import {Tab} from "@/constants/types/ITabs";
+import {Tabs} from "@/constants/data/TabsData";
 
 interface StorageInterface {
     currentTab: Tab;

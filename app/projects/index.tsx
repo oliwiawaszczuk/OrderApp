@@ -13,9 +13,9 @@ export default function Project() {
         <View style={styles.container}>
             <HeaderAndSubheader header={"Projects"} subheader={"Projects Projects Projects Projects"}/>
 
-            <TouchableOpacity style={styles.buttonPrimary} onPress={() => {router.navigate(`/projects/orderHistory`);}}>
-                <Text style={styles.buttonTextPrimary}>Order History</Text>
-            </TouchableOpacity>
+            {/*<TouchableOpacity style={styles.buttonPrimary} onPress={() => {router.navigate(`/projects/orderHistory`);}}>*/}
+            {/*    <Text style={styles.buttonTextPrimary}>Order History</Text>*/}
+            {/*</TouchableOpacity>*/}
 
             <FlatList
                 data={projectShortData}

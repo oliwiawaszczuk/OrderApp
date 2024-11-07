@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Text } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {View, StyleSheet, TouchableOpacity} from "react-native";
-import { useThemeColor } from '@/hooks/useThemeColor';
-import { Tab, Tabs } from "@/api/Tabs";
+import { Tab } from "@/constants/types/ITabs";
 import { storage } from "@/api/store";
 import {useRouter} from 'expo-router';
+import {defaultIconColor, primary} from "@/constants/Colors";
+import {Tabs} from "@/constants/data/TabsData";
 
 const iconSize = 38;
 
@@ -16,10 +17,6 @@ export default function NavBar() {
     const currentTab = storage((state) => state.currentTab);
 
     const [activeTab, setActiveTab] = useState<Tab | null>(currentTab);
-
-    const backgroundColor = useThemeColor({}, 'background');
-    const defaultIconColor = useThemeColor({}, 'tabIconDefault');
-    const selectedIconColor = useThemeColor({}, 'tabIconSelected');
 
     useEffect(() => {
         for (let tab of Tabs) {
@@ -33,6 +30,7 @@ export default function NavBar() {
     function changeTabFunc(tab: Tab) {
         setActiveTab(tab);
         changeTab(tab);
+        // @ts-ignore
         router.navigate(`/${tab.path}`);
     }
 
@@ -47,12 +45,12 @@ export default function NavBar() {
                     <MaterialCommunityIcons
                         name={tab.icon}
                         size={iconSize}
-                        color={currentTab === tab ? selectedIconColor : defaultIconColor}
+                        color={currentTab === tab ? primary : defaultIconColor}
                     />
-                    <Text style={{ color: currentTab === tab ? selectedIconColor : defaultIconColor }}>
+                    <Text style={{ color: currentTab === tab ? primary : defaultIconColor }}>
                         {tab.label}
                     </Text>
-                    <View style={[styles.selectedTabBorder, { backgroundColor: currentTab === tab ? selectedIconColor : backgroundColor }]} />
+                    <View style={[styles.selectedTabBorder, { backgroundColor: currentTab === tab ? primary : "#fff" }]} />
                 </TouchableOpacity>
             ))}
         </View>
