@@ -1,9 +1,7 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
+import {View, Text} from 'react-native';
 import {useRouter} from "expo-router";
-import {renderOrderShortItem, orderShortData, renderOrderItemsToList} from "@/components/renderOrderShortItem";
-import useOldProject from "./useOldProject"
+import {renderOrderItemsToList} from "@/components/renderOrderShortItem";
 import {styles} from "@/constants/orderCSS";
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
