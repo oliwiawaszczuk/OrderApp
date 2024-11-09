@@ -7,8 +7,8 @@ import {styles} from "@/constants/styles/headerAndSubheaderCSS";
 export default function HeaderAndSubheader({header, subheader}: {header: string, subheader: string}) {
     return (
         <View style={styles.header}>
-            <Text style={styles.headerText}>{header}</Text>
-            <Text style={styles.subText}>{subheader}</Text>
+            {header.trim() !== "" && <Text style={styles.headerText}>{header}</Text>}
+            {subheader.trim() !== "" && <Text style={styles.subText}>{subheader}</Text>}
         </View>
     );
 }

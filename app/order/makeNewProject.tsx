@@ -4,7 +4,7 @@ import {Text, TextInput} from "react-native-paper";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 import {styles} from "@/constants/styles/orderCSS";
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";
-import {InputText, InputNumeric} from "@/components/forms/Input";
+import {InputText, InputNumeric, InputArea} from "@/components/forms/Input";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 
 export default function makeNewProject() {
@@ -26,16 +26,8 @@ export default function makeNewProject() {
             <InputText label={"Project address"} get={localisation} set={setLocalisation}/>
             <InputText label={"Leader"} get={leaderName} set={setLeaderName}/>
             <InputNumeric label={"Leader phone number"} get={leaderPhoneNumber} set={setLeaderPhoneNumber}/>
+            <InputArea label="Type your note here..." get={note} set={setNote} lines={4} />
 
-            <TextInput
-                style={[styles.input, styles.textArea]}
-                mode="outlined"
-                label="Type your note here..."
-                value={note}
-                onChangeText={setNote}
-                multiline={true}
-                numberOfLines={4}
-            />
             <PrimaryButton text={"Create new order   ➜"} onPressFunc={handleCreateProject}/>
 
         </ScrollView>

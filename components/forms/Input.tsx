@@ -31,3 +31,17 @@ export function InputNumeric({label, get, set}: {label: string, get: any, set: a
         />
     );
 }
+
+export function InputArea({label, get, set, lines}: {label: string, get: any, set: any, lines: number}) {
+    return (
+        <TextInput
+            style={[styles.input, styles.textArea]}
+            mode="outlined"
+            label={label}
+            value={get}
+            onChangeText={set}
+            multiline={true}
+            numberOfLines={lines}
+        />
+    );
+}
