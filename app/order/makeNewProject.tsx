@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {ScrollView, TouchableOpacity, View} from "react-native";
 import {Text, TextInput} from "react-native-paper";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
-import {styles} from "@/constants/orderCSS";
+import {styles} from "@/constants/styles/orderCSS";
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";
 import {InputText, InputNumeric} from "@/components/forms/Input";
 import PrimaryButton from "@/components/buttons/PrimaryButton";

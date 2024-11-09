@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {useRouter} from "expo-router";
 import {renderOrderItemsToList} from "@/components/renderOrderShortItem";
-import {styles} from "@/constants/orderCSS";
+import {styles} from "@/constants/styles/orderCSS";
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";

@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import {primary, secondary} from "@/constants/Colors";
+import {primary, secondary} from "@/constants/styles/Colors";
 
 export interface ButtonInterface {
     text: string,

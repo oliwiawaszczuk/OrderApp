@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
-import {styles} from "@/constants/orderCSS";
+import {styles} from "@/constants/styles/orderCSS";
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";
 
 export default function OrderHistory() {

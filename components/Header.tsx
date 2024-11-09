@@ -1,9 +1,10 @@
 import React from "react";
 import {Text} from "react-native-paper";
-import {StyleSheet, View, Image, TouchableOpacity} from "react-native";
+import {View, Image, TouchableOpacity} from "react-native";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
-import {primary, logoImageSize} from "@/constants/Colors";
+import {primary} from "@/constants/styles/Colors";
 import {useRouter} from "expo-router";
+import {styles} from "@/constants/styles/headerCSS";
 
 
 export default function Header() {
@@ -22,28 +23,3 @@ export default function Header() {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        margin: 5,
-        flexDirection: "row",
-        justifyContent: "space-between",
-    },
-    flexRowJustBetween: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
-    icon: {
-        padding: 12,
-    },
-    logoImage: {
-        width: logoImageSize,
-        height: logoImageSize,
-    },
-    logoText: {
-        fontWeight: "bold",
-        fontSize: 16,
-        color: primary,
-    },
-});

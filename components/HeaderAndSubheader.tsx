@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text} from "react-native";
 import {StyleSheet} from "react-native";
-import {primary} from "@/constants/Colors";
+import {primary} from "@/constants/styles/Colors";
+import {styles} from "@/constants/styles/headerAndSubheaderCSS";
 
 export default function HeaderAndSubheader({header, subheader}: {header: string, subheader: string}) {
     return (
@@ -11,21 +12,3 @@ export default function HeaderAndSubheader({header, subheader}: {header: string,
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    header: {
-        marginBottom: 20,
-    },
-    headerText: {
-        fontSize: 30,
-        color: primary,
-        fontWeight: "bold",
-        textAlign: 'center',
-    },
-    subText: {
-        textAlign: 'center',
-        color: primary,
-        fontSize: 16,
-        marginTop: 8,
-    },
-});

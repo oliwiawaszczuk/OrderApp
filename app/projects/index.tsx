@@ -2,9 +2,10 @@ import React from 'react';
 import {View, Text, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import {useRouter} from "expo-router";
-import {styles} from "@/constants/orderCSS";
+import {styles} from "@/constants/styles/orderCSS";
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";
-import {projectShortData, renderProjectShortItem} from "@/components/renderProjectShortItem";
+import {renderProjectShortItem} from "@/components/renderProjectShortItem";
+import {projectShortData} from "@/assets/examplesData/Projects";
 
 export default function Project() {
     const router = useRouter();

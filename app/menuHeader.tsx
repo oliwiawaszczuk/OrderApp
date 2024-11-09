@@ -3,7 +3,7 @@ import {useRouter} from "expo-router"
 import {menuData} from "@/constants/data/MenuData";
 import {StyleSheet} from "react-native"
 import {MenuSection} from "@/constants/types/IMenu";
-import {primary} from "@/constants/Colors";
+import {primary} from "@/constants/styles/Colors";
 
 export default function menuHeader() {
     const router = useRouter()

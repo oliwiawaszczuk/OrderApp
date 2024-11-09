@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Text } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import {View, StyleSheet, TouchableOpacity} from "react-native";
+import {View, StyleSheet, TouchableOpacity, Dimensions} from "react-native";
 import { Tab } from "@/constants/types/ITabs";
 import { storage } from "@/api/store";
 import {useRouter} from 'expo-router';
-import {defaultIconColor, primary} from "@/constants/Colors";
+import {defaultIconColor, primary} from "@/constants/styles/Colors";
 import {Tabs} from "@/constants/data/TabsData";
+import {styles} from "@/constants/styles/navBarCSS";
 
 const iconSize = 38;
+
+const gap = 2;
+const numCols = 3;
+// const sizeForIcon = (screenWidth / numCols) - (gap * (numCols+1) / numCols);
 
 export default function NavBar() {
     const router = useRouter();
@@ -56,23 +61,4 @@ export default function NavBar() {
         </View>
     );
 }
-// grid/3 | arrow
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: "#fff",
-        flexDirection: "row",
-        justifyContent: "space-around",
-        alignItems: "center",
-        paddingTop: 8,
-    },
-    iconContainer: {
-        alignItems: "center",
-    },
-    selectedTabBorder: {
-        width: "100%",
-        height: 8,
-        marginTop: 8,
-        borderTopLeftRadius: 6,
-        borderTopRightRadius: 6,
-    }
-});
+

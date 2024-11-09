@@ -1,7 +1,7 @@
-import {styles} from "@/constants/orderCSS";
+import {styles} from "@/constants/styles/orderCSS";
 import {TextInput} from "react-native-paper";
 import React from "react";
-import {primary} from "@/constants/Colors";
+import {primary} from "@/constants/styles/Colors";
 
 
 

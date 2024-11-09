@@ -1,8 +1,9 @@
 import {FlatList, TouchableOpacity, View} from "react-native";
-import {styles} from "@/constants/orderCSS";
+import {styles} from "@/constants/styles/orderCSS";
 import React, {useEffect} from "react";
-import {projectShortData, renderProjectShortItem} from "@/components/renderProjectShortItem";
+import {renderProjectShortItem} from "@/components/renderProjectShortItem";
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";
+import {projectShortData} from "@/assets/examplesData/Projects";
 
 export default function useOldProject() {
     return (

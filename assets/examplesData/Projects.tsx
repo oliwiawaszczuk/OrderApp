@@ -1,13 +1,5 @@
 // import Project from "@/constants/types/IProject";
 
-// interface Project {
-//     number: string,
-//     date: string,
-//     projectName: string,
-//     leader: string,
-//     localisation: string,
-// }
-//
 // export const projectsData: Project = [
 //     {number: '1', date: '21/10/2025', projectName: "name1", leader: "leader1", localisation: "localisation1"},
 //     {number: '2', date: '21/11/2025', projectName: "name2", leader: "leader2", localisation: "localisation2"},
@@ -19,7 +11,7 @@
 //     {number: '8', date: '13/04/2026', projectName: "name8", leader: "leader8", localisation: "localisation8"},
 // ];
 
-export interface projectShortItem {
+export interface Project {
     id: string,
     date: string,
     projectName: string,
@@ -27,7 +19,8 @@ export interface projectShortItem {
     localisation: string,
 }
 
-export const projectShortData: projectShortItem = [
+// @ts-ignore
+export const projectShortData: Project = [
     {id: '1', date: '21/10/2025', projectName: "name1", leader: "leader1", localisation: "localisation1"},
     {id: '2', date: '21/11/2025', projectName: "name2", leader: "leader2", localisation: "localisation2"},
     {id: '3', date: '22/11/2025', projectName: "name3", leader: "leader3", localisation: "localisation3"},

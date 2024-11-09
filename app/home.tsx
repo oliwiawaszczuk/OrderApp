@@ -5,8 +5,9 @@ import {orderShortData, renderOrderItemsToList, renderOrderShortItem} from "@/co
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
-import {primary} from "@/constants/Colors";
-import {styles} from "@/constants/orderCSS";
+import {primary} from "@/constants/styles/Colors";
+import {styles} from "@/constants/styles/orderCSS";
+import {stylesHome} from "@/constants/styles/homeCSS";
 
 function FundsCard() {
     return (
@@ -38,26 +39,3 @@ export default function Home() {
         </View>
     );
 }
-
-const stylesHome = StyleSheet.create({
-    buttonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginBottom: 15,
-    },
-    fundsCard: {
-        backgroundColor: primary,
-        padding: 8,
-        borderRadius: 20,
-    },
-    fundsText: {
-        color: '#fff',
-        fontSize: 16,
-    },
-    fundsAmount: {
-        color: '#fff',
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginTop: 10,
-    },
-});
