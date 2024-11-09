@@ -5,6 +5,7 @@ import {primary} from "@/constants/styles/Colors";
 import {EStatus, orderShortItem} from "@/constants/types/IOrder";
 import {styles} from "@/constants/styles/orderItemsCSS";
 import {orderShortData} from "@/assets/examplesData/Order";
+import {useRouter} from "expo-router";
 
 const iconSize = 24;
 const iconColor = primary;
@@ -41,9 +42,10 @@ export const renderOrderShortItem = ({item}: { item: orderShortItem }) => (
 );
 
 export function renderOrderItemsToList() {
+    const router = useRouter();
 
-    function redirectToOrderDetails (id: string) {
-        console.log("redirect to order details ", id);
+    function redirectToOrderDetails (id: number) {
+        router.navigate('OrderId', { id });
     }
 
     const renderItem = ({item}: {item: orderShortItem}) => (

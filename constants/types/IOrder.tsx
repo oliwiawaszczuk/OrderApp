@@ -2,6 +2,7 @@ import Project from "@/constants/types/IProject";
 import Product from "@/constants/types/IProduct";
 
 export default interface Order {
+    id: number,
     date: string,
     project: Project,
     products: Product[],
@@ -14,7 +15,7 @@ export enum EStatus {
 }
 
 export interface orderShortItem {
-    id: string,
+    id: number,
     date: string,
     delivery: string,
     material: string,

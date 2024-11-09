@@ -9,7 +9,7 @@ import SecondaryButton from "@/components/buttons/SecondaryButton";
 
 // router.navigate(`/order/useOldProject`); - native stack navigator
 
-export default function Order() {
+export default function OrderScreen() {
     const router = useRouter();
 
     return (

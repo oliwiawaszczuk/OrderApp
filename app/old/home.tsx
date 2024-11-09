@@ -1,7 +1,7 @@
 import {View, StyleSheet} from 'react-native';
 import React from "react";
 import {Text, Card} from "react-native-paper";
-import {orderShortData, renderOrderItemsToList, renderOrderShortItem} from "@/components/renderOrderShortItem";
+import {renderOrderItemsToList, renderOrderShortItem} from "@/components/renderOrderShortItem";
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
@@ -20,7 +20,7 @@ function FundsCard() {
     );
 }
 
-export default function Home() {
+export default function HomeScreen() {
     return (
         <View style={styles.container}>
             <HeaderAndSubheader header={"Highly effective solutions"} subheader={"Manage orders, track costs, and visualize data with ease. We gives you the tools to drive smarter business decisions."}/>
