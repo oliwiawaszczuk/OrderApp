@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
         paddingTop: 8,
     },
     iconContainer: {
+        alignItems: "center",
     },
     selectedTabBorder: {
         width: "100%",
