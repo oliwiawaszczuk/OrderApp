@@ -9,39 +9,39 @@ import {styles} from "@/constants/styles/headerCSS";
 export default function Header() {
     const router = useRouter();
 
-    const pathname = usePathname();  // Używamy usePathname, by dostać ścieżkę URL
-
-    if (!pathname) {
-        return null;  // Jeśli pathname jest niezdefiniowane, zwróć null (lub placeholder)
-    }
-
-    // Dzielimy ścieżkę URL na segmenty
-    const pathSegments = pathname.split("/").filter(Boolean);
-
-    // Funkcja do generowania linków breadcrumb
-    const generateBreadcrumbs = () => {
-        const crumbs: JSX.Element[] = [];
-        let currentPath = "/";
-
-        // Iterujemy po segmentach ścieżki i generujemy linki
-        pathSegments.forEach((segment, index) => {
-            currentPath += `${segment}/`;
-            crumbs.push(
-                <View key={index} style={{flexDirection: "row", alignItems: "center"}}>
-                    {index < pathSegments.length - 1 ? (
-                        <TouchableOpacity onPress={() => router.push(currentPath)}>
-                            <Text style={{color: "blue"}}>{segment}</Text>
-                        </TouchableOpacity>
-                    ) : (
-                        <Text>{segment}</Text>
-                    )}
-                    {index < pathSegments.length - 1 && <Text> / </Text>}
-                </View>
-            );
-        });
-
-        return crumbs;
-    };
+    // const pathname = usePathname();  // Używamy usePathname, by dostać ścieżkę URL
+    //
+    // if (!pathname) {
+    //     return null;  // Jeśli pathname jest niezdefiniowane, zwróć null (lub placeholder)
+    // }
+    //
+    // // Dzielimy ścieżkę URL na segmenty
+    // const pathSegments = pathname.split("/").filter(Boolean);
+    //
+    // // Funkcja do generowania linków breadcrumb
+    // const generateBreadcrumbs = () => {
+    //     const crumbs: JSX.Element[] = [];
+    //     let currentPath = "/";
+    //
+    //     // Iterujemy po segmentach ścieżki i generujemy linki
+    //     pathSegments.forEach((segment, index) => {
+    //         currentPath += `${segment}/`;
+    //         crumbs.push(
+    //             <View key={index} style={{flexDirection: "row", alignItems: "center"}}>
+    //                 {index < pathSegments.length - 1 ? (
+    //                     <TouchableOpacity onPress={() => router.push(currentPath)}>
+    //                         <Text style={{color: "blue"}}>{segment}</Text>
+    //                     </TouchableOpacity>
+    //                 ) : (
+    //                     <Text>{segment}</Text>
+    //                 )}
+    //                 {index < pathSegments.length - 1 && <Text> / </Text>}
+    //             </View>
+    //         );
+    //     });
+    //
+    //     return crumbs;
+    // };
 
     return (
         <>

@@ -27,6 +27,7 @@ export default function Home() {
 
             <View style={stylesHome.buttonContainer}>
                 <PrimaryButton text={"New Order"} onPressFunc={() => console.log('New Order pressed')}/>
+                <View style={{width: 10}}></View>
                 <SecondaryButton text={"Learn More"} onPressFunc={() => console.log('Learn More pressed')}/>
             </View>
 

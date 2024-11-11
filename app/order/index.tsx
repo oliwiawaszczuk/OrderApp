@@ -17,7 +17,9 @@ export default function Order() {
             <HeaderAndSubheader header={"Create new order"} subheader={"Add products, choose your supplier, and set delivery details—all in one place. Stay organized and keep every order on track!"}/>
     
             <PrimaryButton text={"New Order"} onPressFunc={() => {router.navigate(`/order/makeNewProject`);}}/>
+            <View style={{height: 14}}></View>
             <SecondaryButton text={"New order for old project"} onPressFunc={() => {router.navigate(`/order/useOldProject`);}}/>
+            <View style={{height: 14}}></View>
             <SecondaryButton text={"New order without project"} onPressFunc={() => {router.navigate(`/order/doWithoutProject`);}}/>
 
             <Text style={styles.historyLabel}>History</Text>

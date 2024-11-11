@@ -4,7 +4,8 @@ import {primary} from "@/constants/styles/Colors";
 
 export const styles = StyleSheet.create({
     container: {
-        margin: 5,
+        marginVertical: 5,
+        marginHorizontal: 10,
         flexDirection: "row",
         justifyContent: "space-between",
     },
@@ -22,7 +23,7 @@ export const styles = StyleSheet.create({
     },
     logoText: {
         fontWeight: "bold",
-        fontSize: 16,
+        fontSize: 20,
         color: primary,
     },
 });

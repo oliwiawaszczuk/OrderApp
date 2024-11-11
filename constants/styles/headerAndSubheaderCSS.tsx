@@ -3,7 +3,7 @@ import {primary} from "@/constants/styles/Colors";
 
 export const styles = StyleSheet.create({
     header: {
-        marginBottom: 20,
+        marginVertical: 20,
     },
     headerText: {
         fontSize: 30,
