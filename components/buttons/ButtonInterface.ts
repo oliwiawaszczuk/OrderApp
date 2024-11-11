@@ -13,7 +13,7 @@ export interface ButtonIconInterface extends ButtonInterface {
 export const styles = StyleSheet.create({
     button: {
         flexGrow: 1,
-        paddingVertical: 10,
+        paddingVertical: 20,
         paddingHorizontal: 20,
         borderRadius: 8,
         alignItems: "center",

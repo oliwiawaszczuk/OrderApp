@@ -2,17 +2,17 @@ import {Button, Text} from "react-native-paper";
 import {ButtonIconInterface, ButtonInterface, styles} from "@/components/buttons/ButtonInterface";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 import React from "react";
+import {TouchableOpacity} from "react-native";
 
 
 export default function PrimaryButton({text, onPressFunc}: ButtonInterface) {
     return (
-        <Button
+        <TouchableOpacity
             style={[styles.button, styles.buttonPrimary]}
             onPress={onPressFunc}
-            labelStyle={styles.buttonTextPrimary}
-            rippleColor="transparent"
+            activeOpacity={0.8}
         >
-            {text}
-        </Button>
+            <Text style={styles.buttonTextPrimary}>{text}</Text>
+        </TouchableOpacity>
     );
 }
