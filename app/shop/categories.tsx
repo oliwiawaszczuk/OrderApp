@@ -2,37 +2,51 @@ import {View, Text, TouchableOpacity} from "react-native";
 import {useState} from "react";
 import {IProductCategories, MainCategory, ProductCategories} from "@/constants/data/ProductCategories";
 import {StyleSheet} from "react-native";
-import {primary} from "@/constants/styles/Colors";
+import {backgroundColor, defaultIconColor, primary} from "@/constants/styles/Colors";
+import {SearchInput} from "@/components/forms/Input";
+import {MaterialIcons} from "@expo/vector-icons";
+import {Color} from "ansi-fragments/build/fragments/Color";
 
 export default function Categories() {
     const [ejected, setEjected] = useState<MainCategory | null>()
-
-    const getSubcategories = (mainCategory: MainCategory) => {
-        return ProductCategories.filter(category => category.mainCategory === mainCategory);
-    };
+    const [searchText, setSearchText] = useState("")
 
     const switchEjectedMainCategory = (clickedMainCategory: MainCategory) => {
-        setEjected(clickedMainCategory === ejected ? null : clickedMainCategory);
+        setEjected(clickedMainCategory === ejected ? null : clickedMainCategory)
     }
 
     function selectCategory(selectedCategory: IProductCategories) {
         console.log("Selected category: ", selectedCategory.name)
     }
 
+    const filteredMainCategories = Object.values(MainCategory).filter((category) => {
+        const mainCategoryMatches = category.toLowerCase().includes(searchText.toLowerCase())
+        const subcategoriesMatch = getFilteredSubcategories(category).length > 0
+
+        return mainCategoryMatches || subcategoriesMatch
+    })
+
+    function getFilteredSubcategories(mainCategory: MainCategory){
+        return ProductCategories.filter(category =>
+            category.mainCategory === mainCategory &&
+            category.name.toLowerCase().includes(searchText.toLowerCase())
+        )
+    }
+
     return (
-        <View style={{marginHorizontal: 20}}>
-            {/*SearchComponent*/}
-            {Object.values(MainCategory).map((category, index) => (
-                <View style={styles.groupCategoryContainer}>
+        <View style={styles.container}>
+            <SearchInput get={searchText} set={setSearchText}/>
+            {filteredMainCategories.map((category, index) => (
+                <View style={styles.groupCategoryContainer} key={index}>
                     <TouchableOpacity key={index} onPress={() => switchEjectedMainCategory(category)} style={styles.mainCategory}>
-                        <Text>{category}</Text>
-                        <Text>Arrow</Text>
+                        <Text style={styles.categoryText}>{category}</Text>
+                        <MaterialIcons name="arrow-drop-up" size={18} color={defaultIconColor}/>
                     </TouchableOpacity>
                     {category === ejected && (
                         <View style={styles.subCategoryContainer}>
-                            {getSubcategories(category).map((subCategory, subIndex) => (
+                            {getFilteredSubcategories(category).map((subCategory, subIndex) => (
                                 <TouchableOpacity onPress={() => selectCategory(subCategory)} key={subIndex} style={styles.subCategoryText}>
-                                    <Text>{subCategory.name}</Text>
+                                    <Text style={styles.categoryText}>{subCategory.name}</Text>
                                 </TouchableOpacity>
                             ))}
                         </View>
@@ -44,9 +58,14 @@ export default function Categories() {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        paddingHorizontal: 20,
+        backgroundColor: backgroundColor,
+    },
     groupCategoryContainer: {
-        borderBottomWidth: 1,
-        borderBottomColor: primary,
+        borderBottomWidth: 1.5,
+        borderBottomColor: "#72767f",
     },
     mainCategory: {
         flexDirection: "row",
@@ -59,5 +78,9 @@ const styles = StyleSheet.create({
     subCategoryText: {
         paddingVertical: 12,
         paddingLeft: 30,
+    },
+    categoryText: {
+        color: "#254157",
+        fontWeight: "600",
     },
 })

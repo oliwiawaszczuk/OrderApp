@@ -1,11 +1,13 @@
-import {styles} from "@/constants/styles/orderCSS";
+import {styles} from "@/constants/styles/inputCSS";
 import {TextInput} from "react-native-paper";
 import React from "react";
 import {primary} from "@/constants/styles/Colors";
+import {Keyboard, View} from "react-native";
+import {Ionicons} from "@expo/vector-icons";
 
 
 
-export function InputText({label, get, set}: {label: string, get: any, set: any}) {
+export function InputText({label, get, set}: {label: string, get: string, set: (text: string) => void}) {
     return (
         <TextInput
             style={styles.input}
@@ -18,7 +20,7 @@ export function InputText({label, get, set}: {label: string, get: any, set: any}
     );
 }
 
-export function InputNumeric({label, get, set}: {label: string, get: any, set: any}) {
+export function InputNumeric({label, get, set}: {label: string, get: string, set: (text: string) => void}) {
     return (
         <TextInput
             style={styles.input}
@@ -32,7 +34,7 @@ export function InputNumeric({label, get, set}: {label: string, get: any, set: a
     );
 }
 
-export function InputArea({label, get, set, lines}: {label: string, get: any, set: any, lines: number}) {
+export function InputArea({label, get, set, lines}: {label: string, get: string, set: (text: string) => void, lines: number}) {
     return (
         <TextInput
             style={[styles.input, styles.textArea]}
@@ -43,5 +45,22 @@ export function InputArea({label, get, set, lines}: {label: string, get: any, se
             multiline={true}
             numberOfLines={lines}
         />
+    );
+}
+
+export function SearchInput({get, set}: {get: string, set: (text: string) => void}) {
+    return (
+        <View style={styles.searchContainer}>
+            <TextInput
+                style={styles.searchInput}
+                outlineStyle={styles.searchInput}
+                mode="outlined"
+                placeholder="Search..."
+                value={get}
+                onChangeText={set}
+                onSubmitEditing={() => Keyboard.dismiss()}
+            />
+            <Ionicons onPress={() => Keyboard.dismiss()} name="search" size={20} color="#777" style={styles.icon} />
+        </View>
     );
 }
