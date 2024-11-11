@@ -6,6 +6,7 @@ import {styles} from "@/constants/styles/orderCSS";
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";
 import {InputText, InputNumeric, InputArea} from "@/components/forms/Input";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import {right_arrow} from "@/constants/icons";
 
 export default function makeNewProject() {
     const [projectName, setProjectName] = useState("");
@@ -28,7 +29,7 @@ export default function makeNewProject() {
             <InputNumeric label={"Leader phone number"} get={leaderPhoneNumber} set={setLeaderPhoneNumber}/>
             <InputArea label="Type your note here..." get={note} set={setNote} lines={4} />
 
-            <PrimaryButton text={"Create new order   ➜"} onPressFunc={handleCreateProject}/>
+            <PrimaryButton text={`Create new order${right_arrow}`} onPressFunc={handleCreateProject}/>
 
         </ScrollView>
     );

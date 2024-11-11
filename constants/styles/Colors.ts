@@ -3,4 +3,4 @@ export const secondary: string = '#d0e4ff'
 
 export const defaultIconColor: string = '#444a52'
 
-export const backgroundColor: string = "#F4F5F7B5"
+export const backgroundColor: string = "#F4F7FC"

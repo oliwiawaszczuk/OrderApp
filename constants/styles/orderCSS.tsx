@@ -1,12 +1,12 @@
 import {StyleSheet} from "react-native";
-import {primary} from "@/constants/styles/Colors";
+import {backgroundColor, primary} from "@/constants/styles/Colors";
 
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
         paddingTop: 0,
-        backgroundColor: 'rgba(244,245,247,0.71)',
+        backgroundColor: backgroundColor,
     },
     historyLabel: {
         fontSize: 25,
@@ -18,8 +18,8 @@ export const styles = StyleSheet.create({
         marginTop: 20,
     },
     container2: {
-        marginHorizontal: 12,
+        paddingHorizontal: 12,
         padding: 30,
-        backgroundColor: "#F4F7FC",
+        backgroundColor: backgroundColor,
     },
 });

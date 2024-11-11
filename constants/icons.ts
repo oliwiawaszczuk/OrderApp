@@ -1,0 +1,1 @@
+export const right_arrow: string = "   ➜"

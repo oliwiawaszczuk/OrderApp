@@ -8,6 +8,7 @@ import SecondaryButton from "@/components/buttons/SecondaryButton";
 import {primary} from "@/constants/styles/Colors";
 import {styles} from "@/constants/styles/orderCSS";
 import {stylesHome} from "@/constants/styles/homeCSS";
+import {useRouter} from "expo-router";
 
 function FundsCard() {
     return (
@@ -21,12 +22,14 @@ function FundsCard() {
 }
 
 export default function Home() {
+    const router = useRouter()
+
     return (
         <View style={styles.container}>
             <HeaderAndSubheader header={"Highly effective solutions"} subheader={"Manage orders, track costs, and visualize data with ease. We gives you the tools to drive smarter business decisions."}/>
 
             <View style={stylesHome.buttonContainer}>
-                <PrimaryButton text={"New Order"} onPressFunc={() => console.log('New Order pressed')}/>
+                <PrimaryButton text={"New Order"} onPressFunc={() => router.navigate("/order/makeNewProject")}/>
                 <View style={{width: 10}}></View>
                 <SecondaryButton text={"Learn More"} onPressFunc={() => console.log('Learn More pressed')}/>
             </View>
