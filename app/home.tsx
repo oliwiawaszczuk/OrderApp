@@ -1,11 +1,10 @@
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import React from "react";
 import {Text, Card} from "react-native-paper";
-import {orderShortData, renderOrderItemsToList, renderOrderShortItem} from "@/components/renderOrderShortItem";
+import {renderOrderItemsToList} from "@/components/renderOrderShortItem";
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
-import {primary} from "@/constants/styles/Colors";
 import {styles} from "@/constants/styles/orderCSS";
 import {stylesHome} from "@/constants/styles/homeCSS";
 import {useRouter} from "expo-router";

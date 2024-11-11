@@ -1,5 +1,5 @@
 import Project from "@/constants/types/IProject";
-import Product from "@/constants/types/IProduct";
+import IProduct from "@/constants/types/IProduct";
 
 export interface Status {
 
@@ -11,7 +11,7 @@ export default interface Delivery {
     companyLocalisation: string,
     cost: string,
     contact: string, // mail, phone, number, website
-    products: Product[],
+    products: IProduct[],
     note: string,
     files: string[],
     projectContracted: Project,

@@ -9,14 +9,21 @@ export enum MainCategory {
     LumberWoodProducts = "Lumber & Wood Products",
 }
 
+export enum SubCategory {
+    General = "General",
+    BricksAndBlocks = "Bricks & Blocks",
+    SteelAndRebar = "Steel & Rebar",
+    Aggregates = "Aggregates",
+}
+
 export interface IProductCategories {
     mainCategory: MainCategory,
     name: string,
 }
 
-export const ProductCategories: IProductCategories[] = [
-    {mainCategory: MainCategory.BuildingMaterials, name: "General"},
-    {mainCategory: MainCategory.BuildingMaterials, name: "Bricks & Blocks"},
-    {mainCategory: MainCategory.BuildingMaterials, name: "Steel & Rebar"},
-    {mainCategory: MainCategory.BuildingMaterials, name: "Aggregates"},
-]
+export const ProductCategories: Record<string, IProductCategories> = {
+    "General": { mainCategory: MainCategory.BuildingMaterials, name: "General" },
+    "Bricks & Blocks": { mainCategory: MainCategory.BuildingMaterials, name: "Bricks & Blocks" },
+    "Steel & Rebar": { mainCategory: MainCategory.BuildingMaterials, name: "Steel & Rebar" },
+    "Aggregates": { mainCategory: MainCategory.BuildingMaterials, name: "Aggregates" },
+};

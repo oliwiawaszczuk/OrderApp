@@ -27,7 +27,7 @@ export default function Categories() {
     })
 
     function getFilteredSubcategories(mainCategory: MainCategory){
-        return ProductCategories.filter(category =>
+        return Object.values(ProductCategories).filter(category =>
             category.mainCategory === mainCategory &&
             category.name.toLowerCase().includes(searchText.toLowerCase())
         )

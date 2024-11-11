@@ -1,5 +1,5 @@
 import Project from "@/constants/types/IProject";
-import Product from "@/constants/types/IProduct";
+import IProduct from "@/constants/types/IProduct";
 
 export enum TypeOfDelivery {
     type1,
@@ -10,7 +10,7 @@ export default interface Order {
     id: number,
     date: string,
     project: Project,
-    products: Product[],
+    products: IProduct[],
     typeOfDelivery: TypeOfDelivery,
 }
 
