@@ -6,8 +6,10 @@ import {backgroundColor, defaultIconColor, primary} from "@/constants/styles/Col
 import {SearchInput} from "@/components/forms/Input";
 import {MaterialIcons} from "@expo/vector-icons";
 import {Color} from "ansi-fragments/build/fragments/Color";
+import {useRouter} from "expo-router";
 
 export default function Categories() {
+    const router = useRouter()
     const [ejected, setEjected] = useState<MainCategory | null>()
     const [searchText, setSearchText] = useState("")
 
@@ -16,7 +18,7 @@ export default function Categories() {
     }
 
     function selectCategory(selectedCategory: IProductCategories) {
-        console.log("Selected category: ", selectedCategory.name)
+        router.navigate(`/shop/${selectedCategory.name}`)
     }
 
     const filteredMainCategories = Object.values(MainCategory).filter((category) => {

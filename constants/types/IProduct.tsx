@@ -18,4 +18,5 @@ export default interface IProduct {
     company: string,
     category: SubCategory,
     // count: number,
+    // files[]
 }
