@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     container: {
         marginVertical: 5,
         marginHorizontal: 10,
+        marginTop: 20,
         flexDirection: "row",
         justifyContent: "space-between",
     },

@@ -4,8 +4,11 @@ import {Image, View, Text, StyleSheet} from "react-native";
 import IProduct from "@/constants/types/IProduct";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import {primary} from "@/constants/styles/Colors";
+import {useRouter} from "expo-router";
 
 export default function ProductCard({product}: {product: IProduct}) {
+    const router = useRouter()
+
     return (
         <Card style={styles.container}>
             <Image style={styles.image} source={require('../assets/images/StructuralSteelBeams.png')}/>
@@ -19,7 +22,7 @@ export default function ProductCard({product}: {product: IProduct}) {
             <View style={styles.description}>
                 <Text style={[styles.text, {fontSize: 16}]}>{product.description}</Text>
             </View>
-            <SecondaryButton text="Buy now" onPressFunc={() => {}}/>
+            <SecondaryButton text="Buy now" onPressFunc={() => router.navigate(`/shop/buy/${product.id}`)}/>
         </Card>
     )
 }

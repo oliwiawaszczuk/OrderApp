@@ -40,4 +40,21 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
     },
+    buttonThird: {
+        backgroundColor: "#fff",
+        marginVertical: 5,
+        borderWidth: 0,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 6,
+        elevation: 3,
+    },
+    buttonTextThird: {
+        width: "100%",
+        color: primary,
+        justifyContent: "flex-start",
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
 });

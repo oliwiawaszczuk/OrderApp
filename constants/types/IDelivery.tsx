@@ -5,6 +5,12 @@ export interface Status {
 
 }
 
+export enum TypeOfDelivery {
+    Standard = "Standard Delivery",
+    Express = "Express Delivery",
+    LocalPickup = "Local Pickup",
+}
+
 export default interface Delivery {
     name: string,
     companyName: string,
@@ -16,4 +22,5 @@ export default interface Delivery {
     files: string[],
     projectContracted: Project,
     statusPartnership: Status,
+    typeOfDelivery: TypeOfDelivery,
 }

@@ -8,6 +8,7 @@ import {ProductCategories} from "@/constants/data/ProductCategories";
 import {left_arrow} from "@/constants/icons";
 import {SearchInput} from "@/components/forms/Input";
 import Space from "@/components/Space";
+import {getPathToBackCategories} from "@/app/shop/getPathToBackCategories";
 
 export default function SearchProductByCategory() {
     const router = useRouter()
@@ -21,14 +22,14 @@ export default function SearchProductByCategory() {
 
 
     useEffect(() => {
-        setPathToCategory(ProductCategories[category].mainCategory + " > " + category)
+        setPathToCategory(getPathToBackCategories(category.toString()))
     }, []);
 
     return (
         <ScrollView style={{margin: 10,}}>
             <SearchInput get={searchText} set={setSearchText}/>
             <Space height={8}/>
-            <PrimaryButton text={`${left_arrow} ${pathToCategory}`} onPressFunc={() => router.back()}/>
+            <PrimaryButton text={`${pathToCategory}`} onPressFunc={() => router.back()}/>
             <Space height={8}/>
             {filteredWithSearchTextProducts.map((product) => <ProductCard key={product.id} product={product}/>)}
         </ScrollView>
