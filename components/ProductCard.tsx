@@ -5,6 +5,9 @@ import IProduct from "@/constants/types/IProduct";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import {primary} from "@/constants/styles/Colors";
 import {useRouter} from "expo-router";
+import ThirdButton from "@/components/buttons/ThirdButton";
+import FourthButton from "@/components/buttons/FourthButton";
+import Space from "@/components/Space";
 
 export default function ProductCard({product}: {product: IProduct}) {
     const router = useRouter()
@@ -12,6 +15,7 @@ export default function ProductCard({product}: {product: IProduct}) {
     return (
         <Card style={styles.container}>
             <Image style={styles.image} source={require('../assets/images/StructuralSteelBeams.png')}/>
+            <Space height={8}/>
             <View style={styles.nameAndCost}>
                 <Text style={[styles.text, styles.nameText]}>{product.name}</Text>
                 <Text style={[styles.text, styles.costText]}>
@@ -22,7 +26,8 @@ export default function ProductCard({product}: {product: IProduct}) {
             <View style={styles.description}>
                 <Text style={[styles.text, {fontSize: 16}]}>{product.description}</Text>
             </View>
-            <SecondaryButton text="Buy now" onPressFunc={() => router.navigate(`/shop/buy/${product.id}`)}/>
+            {/*<SecondaryButton text="Buy now" onPressFunc={() => router.navigate(`/shop/buy/${product.id}`)}/>*/}
+            <FourthButton text="Buy now" onPressFunc={() => router.navigate(`/shop/buy/${product.id}`)}/>
         </Card>
     )
 }
@@ -30,9 +35,9 @@ export default function ProductCard({product}: {product: IProduct}) {
 const styles = StyleSheet.create({
     container: {
         padding: 8,
-        backgroundColor: "#eceff6",
+        // backgroundColor: "#eceff6",
         borderColor: primary,
-        borderWidth: 1.5,
+        borderWidth: 0.8,
         borderRadius: 15,
     },
     image: {

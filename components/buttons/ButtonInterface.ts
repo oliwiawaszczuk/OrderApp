@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import {primary, secondary} from "@/constants/styles/Colors";
+import {defaultIconColor, primary, secondary} from "@/constants/styles/Colors";
 
 export interface ButtonInterface {
     text: string,
@@ -56,5 +56,17 @@ export const styles = StyleSheet.create({
         justifyContent: "flex-start",
         fontSize: 16,
         fontWeight: 'bold',
+    },
+    buttonFourth: {
+        backgroundColor: "#fff",
+        borderWidth: 1,
+        borderColor: defaultIconColor,
+        paddingVertical: 15,
+    },
+    buttonTextFourth: {
+        color: primary,
+        fontWeight: "bold",
+        justifyContent: "center",
+        fontSize: 16,
     },
 });

@@ -1,22 +1,21 @@
-import React, {useEffect, useState} from "react";
-import {View, Text, Button, Image, StyleSheet, TouchableOpacity, ScrollView} from "react-native";
-import {useLocalSearchParams, useRouter} from "expo-router";
-import PrimaryButton from "@/components/buttons/PrimaryButton";
-import IProduct from "@/constants/types/IProduct";
-import {getPathToBackCategories} from "@/app/shop/getPathToBackCategories";
-import SecondaryButton from "@/components/buttons/SecondaryButton";
-import {Products} from "@/assets/examplesData/Products";
-import {number} from "prop-types";
-import {backgroundColor, primary} from "@/constants/styles/Colors";
-import ThirdButton from "@/components/buttons/ThirdButton";
-import Space from "@/components/Space";
-import {TypeOfDelivery} from "@/constants/types/IDelivery";
-import {InputText} from "@/components/forms/Input";
+import React, {useEffect, useState} from "react"
+import {View, Text, Button, Image, StyleSheet, TouchableOpacity, ScrollView, Alert} from "react-native"
+import {useLocalSearchParams, useRouter} from "expo-router"
+import PrimaryButton from "@/components/buttons/PrimaryButton"
+import IProduct from "@/constants/types/IProduct"
+import {getPathToBackCategories} from "@/app/shop/getPathToBackCategories"
+import SecondaryButton from "@/components/buttons/SecondaryButton"
+import {Products} from "@/assets/examplesData/Products"
+import {backgroundColor, primary} from "@/constants/styles/Colors"
+import ThirdButton from "@/components/buttons/ThirdButton"
+import Space from "@/components/Space"
+import {TypeOfDelivery} from "@/constants/types/IDelivery"
+import {InputText} from "@/components/forms/Input"
 
 export default function BuyById() {
-    const router = useRouter();
-    const local = useLocalSearchParams();
-    const id = local.id;
+    const router = useRouter()
+    const local = useLocalSearchParams()
+    const id = local.id
     const [pathToBack, setPathToBack] = useState<string>()
 
     const [amount, setAmount] = useState<string>("")
@@ -24,21 +23,63 @@ export default function BuyById() {
     const [deliveryLocalisation, setDeliveryLocalisation] = useState<string>("")
     const [deliveryDate, setDeliveryDate] = useState<string>("")
 
+    const [errors, setErrors] = useState({
+        amount: "",
+        typeOfDelivery: "",
+        deliveryLocalisation: "",
+        deliveryDate: "",
+    })
+
     const product: IProduct | undefined = Products.find((product) => product.id === Number(id))
-    if (product === undefined)
-        return <Text>Product with id: {id} not found</Text>
+    if (product === undefined) return <Text>Product with id: {id} not found</Text>
 
     useEffect(() => {
         setPathToBack(getPathToBackCategories(product.category))
-    }, []);
+    }, [])
 
-    const options = Object.values(TypeOfDelivery);
+    const options = Object.values(TypeOfDelivery)
     const handleOptionSelect = (type: TypeOfDelivery) => {
-        setTypeOfDelivery(type);
-    };
+        setTypeOfDelivery(type)
+    }
 
-    function buyProduct() {
-        console.log("buy product with id: ", id)
+    const validateForm = () => {
+        let isValid = true
+        let errorsTemp = {amount: "", typeOfDelivery: "", deliveryLocalisation: "", deliveryDate: ""}
+
+        if (!amount || isNaN(Number(amount)) || Number(amount) <= 0) {
+            errorsTemp.amount = "Please enter a valid amount greater than 0."
+            isValid = false
+        }
+
+        if (!typeOfDelivery) {
+            errorsTemp.typeOfDelivery = "Please select a delivery type."
+            isValid = false
+        }
+
+        if (!deliveryLocalisation) {
+            errorsTemp.deliveryLocalisation = "Please enter a delivery location."
+            isValid = false
+        }
+
+        if (!deliveryDate) {
+            errorsTemp.deliveryDate = "Please enter a delivery date."
+            isValid = false
+        }
+
+        setErrors(errorsTemp)
+        return isValid
+    }
+
+    const buyProduct = () => {
+        if (validateForm()) {
+            console.log("buy product with id: ", id)
+            setDeliveryDate("")
+            setDeliveryLocalisation("")
+            setAmount("")
+            setTypeOfDelivery(undefined)
+        } else {
+            console.log("Form Error", "Please correct the errors before proceeding.")
+        }
     }
 
     return (
@@ -48,15 +89,14 @@ export default function BuyById() {
                 <Image style={styles.image} source={require('../../../assets/images/StructuralSteelBeams.png')}/>
                 <View style={styles.productContainerText}>
                     <Text style={styles.productName}>{product.name}</Text>
-                    {/*<Text style={styles.productDescription}>{product.description}</Text>*/}
                     <Text
-                        style={styles.productCostText}>{product.currencyBeforeAmount ? product.currency + product.costAmount : product.costAmount + product.currency}
-                        {product.forHowManyCost}</Text>
+                        style={styles.productCostText}>{product.currencyBeforeAmount ? product.currency + product.costAmount : product.costAmount + product.currency}{product.forHowManyCost}</Text>
                 </View>
             </View>
-            <View style={styles.labelWith}>
+            <View style={[styles.labelWith, errors.amount ? styles.errorContainer : {}]}>
                 <Text style={styles.labelText}>Amount</Text>
                 <InputText label="" get={amount} set={setAmount}/>
+                {errors.amount ? <Text style={styles.errorText}>{errors.amount}</Text> : null}
             </View>
             <View style={styles.labelWith}>
                 <Text style={styles.labelText}>Type of delivery</Text>
@@ -71,16 +111,20 @@ export default function BuyById() {
                         <Text style={styles.optionText}>{option}</Text>
                     </TouchableOpacity>
                 ))}
+                {errors.typeOfDelivery ? <Text style={styles.errorText}>{errors.typeOfDelivery}</Text> : null}
             </View>
             <View style={styles.labelWith}>
                 <Text style={styles.labelText}>Delivery localisation</Text>
                 <InputText label="" get={deliveryLocalisation} set={setDeliveryLocalisation}/>
+                {errors.deliveryLocalisation ?
+                    <Text style={styles.errorText}>{errors.deliveryLocalisation}</Text> : null}
             </View>
             <View style={styles.labelWith}>
                 <Text style={styles.labelText}>Delivery date</Text>
                 <InputText label="" get={deliveryDate} set={setDeliveryDate}/>
+                {errors.deliveryDate ? <Text style={styles.errorText}>{errors.deliveryDate}</Text> : null}
             </View>
-            <PrimaryButton text="Buy" onPressFunc={() => buyProduct}/>
+            <PrimaryButton text="Buy" onPressFunc={buyProduct}/>
             <Space height={10}/>
             <SecondaryButton text="Cancel buy" onPressFunc={() => router.back()}/>
             <Space height={10}/>
@@ -118,9 +162,6 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 22,
     },
-    productDescription: {
-        color: primary,
-    },
     productCostText: {
         color: primary,
         fontSize: 20,
@@ -131,7 +172,9 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
     },
     labelWith: {
-        paddingVertical: 10,
+        paddingHorizontal: 10,
+        borderRadius: 15,
+        // paddingVertical: 10,
     },
     optionContainer: {
         flexDirection: "row",
@@ -163,5 +206,14 @@ const styles = StyleSheet.create({
     optionText: {
         fontSize: 16,
         color: "#4a5568",
+    },
+    errorText: {
+        color: "red",
+        fontSize: 14,
+        // marginTop: 5,
+    },
+    errorContainer: {
+        // borderColor: "red",
+        // borderWidth: 1,
     },
 })
