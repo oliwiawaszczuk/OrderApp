@@ -1,11 +1,12 @@
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
-import React from "react";
+import React, {useEffect} from "react";
 import {primary} from "@/constants/styles/Colors";
 import {EStatus, orderShortItem} from "@/constants/types/IOrder";
 import {styles} from "@/constants/styles/orderItemsCSS";
 import {orderShortData} from "@/assets/examplesData/Order";
 import {useRouter} from "expo-router";
+import LoadingView from "@expo/metro-runtime/build/LoadingView.native";
 
 const iconSize = 24;
 const iconColor = primary;
@@ -41,7 +42,7 @@ export const renderOrderShortItem = ({item}: { item: orderShortItem }) => (
     </View>
 );
 
-export function renderOrderItemsToList() {
+export function renderOrderItemsToList({orderData = orderShortData }: {orderData: orderShortItem }) {
     const router = useRouter()
 
     function redirectToOrderDetails (id: number) {
@@ -55,12 +56,10 @@ export function renderOrderItemsToList() {
     );
 
     return (
-        <View>
-            <FlatList
-                data={orderShortData}
-                renderItem={(item) => renderItem(item)}
-                keyExtractor={(item) => item.id}
-            />
-        </View>
-    );
-};
+        <FlatList
+            data={orderData}
+            renderItem={(item) => renderItem(item)}
+            keyExtractor={(item) => item.id}
+        />
+    )
+}

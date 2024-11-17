@@ -5,7 +5,7 @@ import {Project} from "@/assets/examplesData/Projects";
 import {iconColor, iconSize, stylesProjectItems} from "@/constants/styles/projectItemsCSS";
 
 
-export const renderProjectShortItem = ({ item }: { item: Project }) => (
+export const renderProjectShortItem = ({ item, onpress }: { item: Project, onpress: any }) => (
   <View style={stylesProjectItems.listItem}>
     <Text style={stylesProjectItems.dateText}>{item.date}</Text>
 
@@ -24,7 +24,7 @@ export const renderProjectShortItem = ({ item }: { item: Project }) => (
           <Text style={stylesProjectItems.infoText}>{item.localisation}</Text>
         </View>
       </View>
-      <MaterialCommunityIcons name="arrow-right" size={iconSize-8} color="white" style={stylesProjectItems.arrowIcon} />
+      <MaterialCommunityIcons onPress={onpress} name="arrow-right" size={iconSize-8} color="white" style={stylesProjectItems.arrowIcon} />
     </View>
   </View>
 );

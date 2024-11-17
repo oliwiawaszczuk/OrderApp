@@ -37,7 +37,7 @@ export default function Home() {
 
             <Text style={styles.historyLabel}>History</Text>
 
-            {renderOrderItemsToList()}
+            {renderOrderItemsToList({})}
 
         </View>
     );

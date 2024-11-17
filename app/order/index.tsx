@@ -23,7 +23,7 @@ export default function Order() {
             <SecondaryButton text={"New order without project"} onPressFunc={() => {router.navigate(`/order/doWithoutProject`);}}/>
 
             <Text style={styles.historyLabel}>History</Text>
-            {renderOrderItemsToList()}
+            {renderOrderItemsToList({})}
         </View>
     );
 }
