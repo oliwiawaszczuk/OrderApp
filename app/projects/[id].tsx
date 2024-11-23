@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {View, Text, Button} from "react-native";
 import {useLocalSearchParams, useRouter} from "expo-router";
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";
-import {TypeOfDelivery} from "@/constants/types/IOrder";
+import Order, {TypeOfDelivery} from "@/constants/types/IOrder";
 import {InputArea, InputText} from "@/components/forms/Input";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 
@@ -13,6 +13,11 @@ export default function ProjectDetails() {
 
     useEffect(() => {
         // fetch for project details by project id
+        fetch("/orders/<token>")
+            .then(response => response.json() as Promise<Order>)
+            .then(data => {
+
+            })
     }, []);
 
     const [projectName, setProjectName] = useState("");

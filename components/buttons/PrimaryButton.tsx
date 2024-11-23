@@ -1,6 +1,5 @@
-import {Button, Text} from "react-native-paper";
-import {ButtonIconInterface, ButtonInterface, styles} from "@/components/buttons/ButtonInterface";
-import {MaterialCommunityIcons} from "@expo/vector-icons";
+import {Text} from "react-native-paper";
+import {ButtonInterface, styles} from "@/components/buttons/ButtonInterface";
 import React from "react";
 import {TouchableOpacity} from "react-native";
 

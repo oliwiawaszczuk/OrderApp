@@ -36,9 +36,9 @@ const styles = StyleSheet.create({
     container: {
         padding: 8,
         // backgroundColor: "#eceff6",
-        borderColor: primary,
-        borderWidth: 0.8,
-        borderRadius: 15,
+        // borderColor: primary,
+        // borderWidth: 0.8,
+        // borderRadius: 15,
     },
     image: {
         width:"100%",
