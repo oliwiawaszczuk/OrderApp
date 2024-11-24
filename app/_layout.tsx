@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar";
 import {StyleSheet} from "react-native";
 import {useEffect} from "react";
 import Header from "@/components/Header";
+import {backgroundColor} from "@/constants/styles/Colors";
 
 export default function Layout() {
     return (
@@ -25,6 +26,7 @@ const styles = StyleSheet.create({
     },
     slot: {
         flex: 1,
+        backgroundColor: backgroundColor,
     },
     navBar: {
         alignSelf: 'stretch',

@@ -24,3 +24,13 @@ export default interface Delivery {
     statusPartnership: Status,
     typeOfDelivery: TypeOfDelivery,
 }
+
+// temporary
+export interface ShortItemDelivery {
+    id: number,
+    name: string,
+    companyName: string,
+    contact: string,
+    projectContracted: string,
+    statusPartnership: string,
+}

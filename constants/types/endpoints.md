@@ -4,7 +4,7 @@
 
 [//]: # (## Czy endpointy powinny być z tokenem?)
 
-```
+```ts
 // fetch for project details by project id  
   
 fetch("/<token>/project/<id>")   
