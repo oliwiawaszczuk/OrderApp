@@ -6,20 +6,28 @@ import {Tabs} from "@/constants/data/TabsData";
 
 interface StorageInterface {
     currentTab: Tab;
+    session: string;
+    hostApi: string;
+
     changeTab: (tab: Tab) => void;
+    setSession: (session: string) => void;
 }
 
 export const storage = create<StorageInterface>()(
     persist(
         (set) => ({
             currentTab: Tabs[0],
+            session: "",
+            hostApi: "https//localhost:8080/", // can i add session here?
+
             changeTab: (tab: Tab) => set({currentTab: tab}),
+            setSession: (session: string) => set({session: session}),
         }),
         {
             name: "app-storage",
             storage: createJSONStorage(() => AsyncStorage),
             onRehydrateStorage: () => (state) => {
-                console.log('Connecting app-storage... ', state?.currentTab);
+                console.log('Connecting app-storage... ', state?.currentTab); // need load session
             },
         }
     )

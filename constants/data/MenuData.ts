@@ -23,20 +23,20 @@ export const menuData: MenuSection[] = [
     createMenuSection('Delivery', "/delivery", [
         createMenuItem('New delivery', '/delivery/newDelivery'),
     ]),
-    createMenuSection('Shop', "", [
-        createMenuItem('Search by category', ''),
-        createMenuItem('Add product', ''),
-        createMenuItem('Your products', ''),
+    createMenuSection('Shop', "/shop/", [
+        createMenuItem('Search by category', '/shop/categories'),
+        createMenuItem('Add product', '/shop/'),
+        createMenuItem('Your products', '/shop/'),
     ]),
-    createMenuSection('Profile', "", [
-        createMenuItem('Raport and analysis', ''),
-        createMenuItem('See your activity', ''),
-        createMenuItem('Settings', ''),
+    createMenuSection('Profile', "/profile", [
+        createMenuItem('Raport and analysis', '/profile/'),
+        createMenuItem('See your activity', '/profile/'),
+        createMenuItem('Settings', '/profile/settings'),
     ]),
-    createMenuSection('Raport', "", [
-        createMenuItem('Generate raport', ''),
-        createMenuItem('See raports', ''),
-        createMenuItem('See visualisation', ''),
+    createMenuSection('Raport', "/raport", [
+        createMenuItem('Generate raport', '/raport/'),
+        createMenuItem('See raports', '/raport/'),
+        createMenuItem('See visualisation', '/raport/'),
     ]),
     createMenuSection('Log out', "", []),
 ];
