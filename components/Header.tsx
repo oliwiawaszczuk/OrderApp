@@ -5,9 +5,11 @@ import {MaterialCommunityIcons} from "@expo/vector-icons";
 import {primary} from "@/constants/styles/Colors";
 import {useRouter, usePathname} from "expo-router";
 import {styles} from "@/constants/styles/headerCSS";
+import {storage} from "@/api/store";
 
 export default function Header() {
     const router = useRouter();
+    const loginState = storage((state) => state.loginState)
 
     // const pathname = usePathname();  // Używamy usePathname, by dostać ścieżkę URL
     //
@@ -50,12 +52,12 @@ export default function Header() {
                     <Image source={require('../assets/images/icon.png')} style={styles.logoImage}/>
                     <Text style={styles.logoText}>OrderFlow</Text>
                 </TouchableOpacity>
-                <View style={styles.flexRowJustBetween}>
+                {loginState === "login" && <View style={styles.flexRowJustBetween}>
                     <MaterialCommunityIcons onPress={() => router.navigate("/menuHeader")} name="bell" size={24}
                                             color={primary} style={styles.icon}/>
                     <MaterialCommunityIcons onPress={() => router.navigate("/menuHeader")} name="menu" size={24}
                                             color={primary} style={styles.icon}/>
-                </View>
+                </View>}
             </View>
             {/*<Text>Breadcrumbs:</Text>*/}
             {/*{generateBreadcrumbs()}*/}

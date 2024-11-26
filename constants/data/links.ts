@@ -1,0 +1,6 @@
+const facebook: string = "https://facebook.com"
+const twitter: string = "https://twitter.com"
+const instagram: string = "https://instagram.com"
+const linkedin: string = "https://linkedin.com"
+const termsAndConditions: string = ""
+const privacyPolicy: string = ""
