@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
 import {useRouter} from "expo-router";
 import {styles} from "@/constants/styles/orderCSS";
 import HeaderAndSubheader from "@/components/HeaderAndSubheader";

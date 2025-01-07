@@ -12,19 +12,31 @@ import {primary} from "@/constants/styles/Colors";
 export default function ForgotPassword() {
     const router = useRouter()
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [resetClicked, setResetClicked] = useState(false)
+
+    const [email, setEmail] = useState("")
+    const [phone, setPhone] = useState("")
 
     return (
-        <View style={{marginHorizontal: 35}}>
-            <HeaderAndSubheader header="Forgot your password?" subheader=""/>
+        <>
+         {resetClicked ?
+            <View style={{marginHorizontal: 35}}>
+                <HeaderAndSubheader header="Forgot your password?" subheader=""/>
 
-            <InputText label="Email" get={email} set={setEmail}/>
-            <InputText label="Password" get={password} set={setPassword}/>
+                <InputText label="Email" get={email} set={setEmail}/>
+                <InputText label="Phone" get={phone} set={setPhone}/>
 
-            <PrimaryButton text={`Reset your password ${right_arrow}`} onPressFunc={() => router.navigate("/not_login/resetYourPassword")}/>
-            <Space height={20}/>
-            <SecondaryButton text="Back" onPressFunc={() => router.back()}/>
-        </View>
-    );
+                <PrimaryButton text={`Reset your password ${right_arrow}`} onPressFunc={() => router.navigate("/not_login/resetYourPassword")}/>
+                <Space height={20}/>
+                <SecondaryButton text="Back" onPressFunc={() => router.back()}/>
+            </View> :
+            <View style={{marginHorizontal: 35}}>
+                <HeaderAndSubheader header="Check your e-mail!" subheader="Your temporary password send to your adress email! Follow instructions to enstablish your new password.
+    If you can’t see mail from us, remeber to check your spam folder."/>
+
+                 <PrimaryButton text={`Go to log in ${right_arrow}`} onPressFunc={() => router.navigate("/not_login/login")}/>
+            </View>
+         }
+        </>
+    )
 }

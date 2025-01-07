@@ -8,6 +8,7 @@ import SecondaryButton from "@/components/buttons/SecondaryButton";
 import {styles} from "@/constants/styles/orderCSS";
 import {stylesHome} from "@/constants/styles/homeCSS";
 import {useRouter} from "expo-router";
+import {loginUser} from "@/api/authApi";
 
 function FundsCard() {
     return (
@@ -17,28 +18,38 @@ function FundsCard() {
                 <Text style={stylesHome.fundsAmount}>54,44$</Text>
             </Card.Content>
         </Card>
-    );
+    )
 }
 
 export default function Home() {
     const router = useRouter()
+
+    const test = async () => {
+        try {
+            const result = await loginUser()
+            console.log("Registration successful:", result)
+            // router.push("/not_login/successfulRegistration")
+        } catch (error) {
+            alert("Registration failed. Please try again.")
+        }
+    }
 
     return (
         <View style={styles.container}>
             <HeaderAndSubheader header={"Highly effective solutions"} subheader={"Manage orders, track costs, and visualize data with ease. We gives you the tools to drive smarter business decisions."}/>
 
             <View style={stylesHome.buttonContainer}>
-                <PrimaryButton text={"New Order"} onPressFunc={() => router.navigate("/order/makeNewProject")}/>
+                <PrimaryButton text="New Order" onPressFunc={() => router.navigate("/order/makeNewProject")}/>
                 <View style={{width: 10}}></View>
-                <SecondaryButton text={"Learn More"} onPressFunc={() => console.log('Learn More pressed')}/>
+                <SecondaryButton text="Learn More" onPressFunc={() => console.log('Learn More pressed')}/>
             </View>
 
             <FundsCard/>
 
             <Text style={styles.historyLabel}>History</Text>
 
-            {renderOrderItemsToList({})}
+            {renderOrderItemsToList({orderData: null})}
 
         </View>
-    );
+    )
 }

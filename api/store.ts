@@ -30,7 +30,7 @@ export const storage = create<StorageInterface>()(
                 AsyncStorage.removeItem("app-storage");
             },
             autoLogin: async () => {
-                set({loginState: "login"});
+                set({loginState: "not-login"});
                 // try {
                 //     const storageData = await AsyncStorage.getItem('app-storage');
                 //     if (storageData) {

@@ -53,15 +53,16 @@ enum SubCategory {
 ---
 
 ## Project:
-| Nazwa                 | Typ                 | Opis                        |
-|-----------------------|---------------------|-----------------------------|
-| `id`                  | `number`            | `piramy key`                |
-| `number`              | `string or number`  | `number of project?`        |
-| `date`                | `string`            | ``                          |
-| `localisation`        | `string`            | ``                          |
-| `leader_name`         | `string`            | ``                          |
-| `leader phone number` | `string`            | `only phone number?`        |
-| `note`                | `string`            | `len: 256, note in project` |
+| Nazwa                 | Typ                | Opis                        |
+|-----------------------|--------------------|-----------------------------|
+| `id`                  | `number`           | `primary key`               |
+| `name`                | `string`           | `name of project`           |
+| `number`              | `string or number` | `number of project?`        |
+| `date`                | `string`           | ``                          |
+| `localisation`        | `string`           | ``                          |
+| `leader_name`         | `string`           | ``                          |
+| `leader phone number` | `string`           | `only phone number?`        |
+| `note`                | `string`           | `len: 256, note in project` |
 
 ---
 
@@ -98,8 +99,7 @@ enum SubCategory {
 | Nazwa                    | Typ                    | Opis                                       |
 |--------------------------|------------------------|--------------------------------------------|
 | `id`                     | `number`               | `primary key`                              |
-| `currency`               | `Currencies (string)`  | `enum Currencies`                          |
-| `currency_before_amount` | `boolean`              | `need?`                                    |
+| `currency`               | `Currencies (string)`  | `enum Currencies`                          |                                 |
 | `cost_amount`            | `number`               | ``                                         |
 | `for_how_many_cost`      | `string`               | `za co amount np. {cost_amount} per pound` |
 | `description`            | `string`               | `len: 256`                                 |
@@ -107,8 +107,3 @@ enum SubCategory {
 | `subcategory`            | `Subcategory (string)` | `enum Subcategory`                         |
 | `images`                 | `[string]`             | `path to images?`                          |
 | `count`                  | `number`               | ``                                         |
-
----
-
-## Sesion:
-> token sesji, data

@@ -1,9 +1,9 @@
-import {styles} from "@/constants/styles/inputCSS";
 import {TextInput} from "react-native-paper";
 import React from "react";
-import {primary} from "@/constants/styles/Colors";
 import {Keyboard, View} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
+import {styles} from "@/constants/styles/inputCSS";
+import {primary} from "@/constants/styles/Colors";
 
 
 

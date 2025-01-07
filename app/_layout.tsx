@@ -17,7 +17,8 @@ export default function Layout() {
     const changeTab = storage((state) => state.changeTab)
 
     useEffect(() => {
-        storage.getState().autoLogin();
+        storage.getState().autoLogin()
+        // router.navigate("/not_login")
         // console.log("")
 
         if (loginState === "not-login")

@@ -7,6 +7,7 @@ import SecondaryButton from "@/components/buttons/SecondaryButton";
 import {useRouter} from "expo-router";
 import Space from "@/components/Space";
 import {InputNumeric, InputText} from "@/components/forms/Input";
+import {registerUser} from "@/api/authApi";
 
 export default function Register() {
     const router = useRouter()
@@ -17,9 +18,29 @@ export default function Register() {
     const [repeatPassword, setRepeatPassword] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
 
-    const summitRegistration = () => {
-        console.log("zarejestrowano ")
-        router.push("/not_login/successfulRegistration");
+    const summitRegistration = async () => {
+        if (password !== password) {
+            alert("Passwords do not match")
+            return
+        }
+
+        const [firstName, lastName] = nameAndSurname.split(" ")
+
+        const userData = {
+            firstName,
+            lastName,
+            email,
+            password,
+            phoneNumber,
+        }
+
+        try {
+            const result = await registerUser(userData)
+            console.log("Registration successful:", result)
+            router.push("/not_login/successfulRegistration")
+        } catch (error) {
+            alert("Registration failed. Please try again.")
+        }
     }
 
     return (

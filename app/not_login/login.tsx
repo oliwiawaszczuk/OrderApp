@@ -8,6 +8,7 @@ import {useRouter} from "expo-router";
 import Space from "@/components/Space";
 import {InputNumeric, InputText} from "@/components/forms/Input";
 import {primary} from "@/constants/styles/Colors";
+import {loginUser} from "@/api/authApi";
 
 export default function Register() {
     const router = useRouter()
@@ -15,9 +16,14 @@ export default function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const sumbitLogin = () => {
-        console.log("zalogowano ")
-        router.push("/not_login/successfulRegistration");
+    const sumbitLogin = async () => {
+        try {
+            const result = await loginUser()
+            console.log("Registration successful:", result)
+            // router.push("/not_login/successfulRegistration")
+        } catch (error) {
+            alert("Registration failed. Please try again.")
+        }
     }
 
     return (

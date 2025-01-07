@@ -15,6 +15,7 @@ export default function makeNewProject() {
     const [note, setNote] = useState("");
 
     const handleCreateProject = () => {
+        // endpoint /newProject/
     };
 
     return (

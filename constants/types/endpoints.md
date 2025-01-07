@@ -27,14 +27,9 @@ fetch("/<token>/project/<id>")
 
 # Login
 
-> [!IMPORTANT]   
-> Token sesji powinien być tworzony tylko przy login albo register i przekazywany za każdym zapytaniem, które dotyczy danego usera. Natomiast w autologin powinien być przedłużany o [x] czasu
-
----
-
-### **0.1. Endpoint: `/autologin/<token>`**
+### **0.1. Endpoint: `/autologin`**
 #### Metoda: `GET`
-Zwraca `true` albo `false` w zależności, czy token istnieje i nie wygasł. Jeśli `true` to przedłuża
+Zwraca `true` albo `false` w zależności, czy token istnieje i nie wygasł
 
 ---
 
@@ -42,11 +37,11 @@ Zwraca `true` albo `false` w zależności, czy token istnieje i nie wygasł. Je�
 #### Metoda: `POST`
 ```json
 {
-  "": "",
-  "": ""
+  "email": "example@example.com",
+  "password": "****"
 }
 ```
-Zwraca czy udało się zalogować, jeśli tak to generuje i zwraca `token`
+Zwraca czy udało się zalogować
 
 ---
 
@@ -54,23 +49,40 @@ Zwraca czy udało się zalogować, jeśli tak to generuje i zwraca `token`
 #### Metoda: `POST`
 ```json
 {
-  "": "",
-  "": ""
+  "nameAndSurname": "John",
+  "email": "john@gmail.com",
+  "password": "not_hash?",
+  "repeatPassword": "repeat password",
+  "phoneNumber": "123456789" // pattern
 }
 ```
-Zwraca czy udało się stworzyc konto, jeśli tak to generuje i zwraca `token`
+Zwraca czy udało się stworzyc konto tym samym zalogować
 
 ---
 
-### **0.4. Endpoint: `/logout/<token>`**
+### **0.4. Endpoint: `/logout`**
 #### Metoda: `GET`
-Zwraca 
+Zwraca czy udało się wylogować
 
 ---
 
 # Project
 
-### **1.1. Endpoint: `/<token>/projectDetails/<id>`**
+### **1.0. Endpoint: `/newProject/``**
+#### Metoda: `POST`
+```json
+{
+  "name": "",
+  "number": "",
+  "localisation": "",
+  "leader_name": "",
+  "leader_phone_number": "",
+  "note": ""
+}
+```
+
+
+### **1.1. Endpoint: `/projectDetails/<id>`**
 #### Metoda: `GET`
 Zwraca pełne szczegóły projektu (typ `Project`) na podstawie podanego identyfikatora (`id`)
 
@@ -78,13 +90,24 @@ Zwraca pełne szczegóły projektu (typ `Project`) na podstawie podanego identyf
 
 # Order
 
-### **2.1. Endpoint: `/<token>/orderDetails/<id>`**
+### **2.0. Endpoint: `/newOrder/`**
+#### Metoda: `POST`
+```json
+{
+  "project_id": "",
+  "products": [""],
+  "type_of_delivery": "",
+  "status": ""
+}
+```
+
+### **2.1. Endpoint: `/orderDetails/<id>`**
 #### Metoda: `GET`
 Zwraca pełne szczegóły zamówienia (typ `Order`) na podstawie podanego identyfikatora (`id`)
 
 ---
 
-### **2.2 Endpoint: `/<token>/orderHisotry/<nuber_of_order>`**
+### **2.2 Endpoint: `/orderHisotry/<number_of_order>`**
 #### Metoda: `GET`
 > number of order - to liczba zamówień, które powinnam dostać licząc od najnowszych
 Zwraca listę json (skrócona wersja typu Order):
@@ -100,7 +123,7 @@ Zwraca listę json (skrócona wersja typu Order):
 
 ---
 
-### **2.3 Endpoint: `/<token>/orders`**
+### **2.3 Endpoint: `/orders`**
 #### Metoda: `GET`
 Zwraca listę json (skrócona wersja typu Order):
 ```json
@@ -117,13 +140,21 @@ Zwraca listę json (skrócona wersja typu Order):
 
 # Delivery
 
-### **3.1. Endpoint: `/<token>/deliveryDetails/<id>`**
+### **3.0. Endpoint: `/newDelivery/`**
+#### Metoda: `POST`
+```json
+{
+  ""
+}
+```
+
+### **3.1. Endpoint: `/deliveryDetails/<id>`**
 #### Metoda: `GET`
 Zwraca pełne szczegóły dostawy (typ `Delivery`) na podstawie podanego identyfikatora (`id`)
 
 ---
 
-### **3.2. Endpoint: `/<token>/deliveryHistory/<number_of_delivery>`**
+### **3.2. Endpoint: `/deliveryHistory/<number_of_delivery>`**
 #### Metoda: `GET`
 > number of delivery - to liczba dostaw, które powinnam dostać licząc od najnowszych
 Zwraca listę json (skrócona wersja typu Order):

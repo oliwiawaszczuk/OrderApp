@@ -9,13 +9,13 @@ import {right_arrow} from "@/constants/icons";
 import Space from "@/components/Space";
 
 export default function DeliveryDetails() {
-    const router = useRouter();
-    const local = useLocalSearchParams();
-    const id = local.id;
+    const router = useRouter()
+    const local = useLocalSearchParams()
+    const id = local.id
 
-    const [name, setName] = useState("");
-    const [companyName, setCompanyName] = useState("");
-    const [localisation, setLocalisation] = useState("");
+    const [name, setName] = useState("")
+    const [companyName, setCompanyName] = useState("")
+    const [localisation, setLocalisation] = useState("")
     const [cost, setCost] = useState("")
     const [deliveryContactInfo, setDeliveryContactInfo] = useState("")
     const [orderedServices, setOrderedServices] = useState("")
